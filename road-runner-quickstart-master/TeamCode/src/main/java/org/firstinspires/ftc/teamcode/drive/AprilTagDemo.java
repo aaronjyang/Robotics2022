@@ -113,6 +113,7 @@ public class AprilTagDemo extends LinearOpMode
                     if(numFramesWithoutDetection >= THRESHOLD_NUM_FRAMES_NO_DETECTION_BEFORE_LOW_DECIMATION)
                     {
                         aprilTagDetectionPipeline.setDecimation(DECIMATION_LOW);
+                        telemetry.addData("Found?", false);
                     }
                 }
                 // We do see tags!
