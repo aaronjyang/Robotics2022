@@ -12,16 +12,20 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 @Autonomous
 public class Vroom extends LinearOpMode {
     private DcMotorEx rightSlide, leftSlide;
+    private Servo claw;
 
     @Override
         public void runOpMode() {
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
+         //Intializies the hardware
         rightSlide = hardwareMap.get(DcMotorEx.class, "rightslide");
         leftSlide = hardwareMap.get(DcMotorEx.class, "leftslide");
+        claw = hardwareMap.get(servo.class, "claw");
 
+        //Creates first
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d())
-                    .strafeRight(15)
+                    .strafeRight(16)
                     .build();
 
             Trajectory mytraj2 = drive.trajectoryBuilder(myTrajectory.end())
@@ -33,10 +37,13 @@ public class Vroom extends LinearOpMode {
 
             if (isStopRequested()) return;
 
+            claw.setPosition(1);
             drive.followTrajectory(myTrajectory);
             drive.followTrajectory(mytraj2);
-            raise(1,800);
-            raise(-1,700);
+            raise(1,900);
+            sleep(4000);
+            claw.setPosition(0);
+            lower(1,700);
 
         }
         private void raise(double power, long time){
@@ -45,6 +52,12 @@ public class Vroom extends LinearOpMode {
             sleep(time);
 
         }
+        private void lower(double power, long time){
+            rightSlide.setPower(-1*power);
+            leftSlide.setPower(power);
+            sleep(time);
+
+            }
 
     }
 
