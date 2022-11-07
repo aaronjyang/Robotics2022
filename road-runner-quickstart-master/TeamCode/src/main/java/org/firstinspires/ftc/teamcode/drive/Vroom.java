@@ -21,7 +21,28 @@ public class Vroom extends LinearOpMode {
          //Intializies the hardware
         rightSlide = hardwareMap.get(DcMotorEx.class, "rightslide");
         leftSlide = hardwareMap.get(DcMotorEx.class, "leftslide");
+<<<<<<< HEAD
         claw = hardwareMap.get(Servo.class, "claw");
+=======
+        claw = hardwareMap.get(servo.class, "claw");
+        /*
+        Creates a 2d array to map out the junctions and poles. Each array is a row and each element
+        is a col. The values for each Vector2d in the array represents the vector2d postion of a pole
+        or junction
+         */
+
+        Vector2d[][] poles = new Vector2d[5][5];
+
+        for(int i = 0; i < 5; i++){
+            int yStart = 72;
+            yStart -= 18;
+            for(int j = 0; i < 5; i++){
+                int xStart = -72;
+                xStart += 18;
+                poles[i][j] = new Vector2d(xStart, yStart);
+            }
+        }
+>>>>>>> 341ca2b0f2262992e9678993b243fc6915f38fa7
 
         //Creates first
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d())
