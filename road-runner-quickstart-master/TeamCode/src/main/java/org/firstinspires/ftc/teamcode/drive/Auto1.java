@@ -39,7 +39,7 @@ import org.openftc.easyopencv.OpenCvInternalCamera2;
 import java.util.ArrayList;
 
 @Autonomous
-public class CombinedAuto extends LinearOpMode
+public class Auto1 extends LinearOpMode
 {
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -119,7 +119,7 @@ public class CombinedAuto extends LinearOpMode
         pause();
         claw.setPosition(0);
         pause();
-        StrafeRight(50);
+        StrafeRight(1);
         Raise(800);
         forwardRicky(200);
         pause();
@@ -187,7 +187,7 @@ public class CombinedAuto extends LinearOpMode
             if (detectedTag == 1){
                 telemetry.addLine(String.format("\nDetected tag ID=%d", detectedTag));
                 forward();
-                sleep(1000);
+                sleep(1100);
                 stop2();
                 break;
             } else if (detectedTag == 0){
@@ -204,7 +204,7 @@ public class CombinedAuto extends LinearOpMode
                 forward();
                 sleep(1100);
                 right();
-                sleep(1400);
+                sleep(1300);
                 stop2();
                 break;
             } else {

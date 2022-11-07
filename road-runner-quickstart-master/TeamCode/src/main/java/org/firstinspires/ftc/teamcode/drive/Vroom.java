@@ -7,7 +7,7 @@ import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-
+import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous
 public class Vroom extends LinearOpMode {
@@ -21,7 +21,7 @@ public class Vroom extends LinearOpMode {
          //Intializies the hardware
         rightSlide = hardwareMap.get(DcMotorEx.class, "rightslide");
         leftSlide = hardwareMap.get(DcMotorEx.class, "leftslide");
-        claw = hardwareMap.get(servo.class, "claw");
+        claw = hardwareMap.get(Servo.class, "claw");
 
         //Creates first
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d())

@@ -87,6 +87,7 @@ public class AprilTagDemo extends LinearOpMode
         waitForStart();
 
         telemetry.setMsTransmissionInterval(50);
+        int detectionTime = 0;
 
         while (opModeIsActive())
         {
@@ -99,6 +100,7 @@ public class AprilTagDemo extends LinearOpMode
             // If there's been a new frame...
             if(detections != null)
             {
+                telemetry.addData("Detected time", detectionTime);
                 telemetry.addData("FPS", camera.getFps());
                 telemetry.addData("Overhead ms", camera.getOverheadTimeMs());
                 telemetry.addData("Pipeline ms", camera.getPipelineTimeMs());
@@ -142,7 +144,7 @@ public class AprilTagDemo extends LinearOpMode
 
                 telemetry.update();
             }
-
+            detectionTime += 1;
             sleep(20);
         }
     }
